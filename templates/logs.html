@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Logs Page {% endblock title%}
+{% block navbar %}
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for("index") }}">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link " href="{{ url_for("dashboard") }}">Dashbord</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for("train") }}">Model Train</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="{{ url_for("display_logs") }}">Logs</a>
+        </li>
+        
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('logout') }}">Log Out</a>
+            </li>
+        </ul>
+{% endblock navbar %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Log Contents</h1>
+    <div class="log-container border p-3">
+        <pre>{{ log_content }}</pre>
+    </div>
+</div>
+{% endblock content %}

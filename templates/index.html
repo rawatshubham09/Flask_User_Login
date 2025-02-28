@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block navbar %}
+          <li class="nav-item">
+            <a class="nav-link active" href="{{ url_for("index") }}">Home</a>
+          </li>
+        <li class="nav-item">
+            <a class="nav-link " href="{{ url_for("login") }}">Login</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for("register") }}">Register</a>
+        </li>
+        
+        <ul class="nav justify-content-end">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('logout') }}">Log Out</a>
+            </li>
+        </ul>
+        </ul>
+{% endblock navbar %}
+
+
+{% block content %}
+<!-- Carousel -->
+<div class="container mt-5 ">
+    <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            {% for i, image in enumerate(images) %}
+            <button type="button" data-bs-target="#imageCarousel" data-bs-slide-to="{{ i }}" {% if loop.first %}class="active"{% endif %}></button>
+            {% endfor %}
+        </div>
+        <div class="carousel-inner">
+            {% for image in images %}
+            <div class="carousel-item {% if loop.first %}active{% endif %}">
+                <img src="{{ url_for('static', filename='images/' + image) }}" class="d-block w-100" alt="{{ image }}">
+                <div class="carousel-caption">
+                    <h3>{{ image }}</h3>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" style="filter: invert(100%);"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" style="filter: invert(100%);"></span>
+        </button>
+    </div>
+</div>
+  
+  <div class="container-fluid mt-3">
+    
+     
+    <h3>Image Caption Genarator</h3>
+    <p>Experience the magic of transforming images into captivating descriptions with just a click. Our AI-powered tool delivers precise and engaging captions, perfect for enhancing your visual content. 
+        Whether it's for social media, presentations, or personal projects, let our generator breathe life into your images. Try it now and witness the difference!</p>
+  </div>
+  <div class="container-sm text-center">
+    <p>For Generating Text from Image</p>
+    <a href="{{ url_for('login') }}" class="btn btn-primary">Predict</a>
+  </div>
+{% endblock content %}

@@ -1,0 +1,48 @@
+In this section, we will be uploading an image on our web page, and the first step is to create two initial directories, static and templates. We will create a new directory that will hold our images inside the static folder.
+
+The next step is to get the address of this IMG folder we created inside the static folder. So we have to import the os library and use it to save the IMG folder path in a new variable called IMG_FOLDER.
+
+IMG_FOLDER = os.path.join("static", "IMG")
+We will need to pass this address to the application configuration upload folder. So we have to go inside UPLOAD_FOLDER and assign the address where we want to look at the images.
+
+app.config["UPLOAD_FOLDER"] = IMG_FOLDER
+In the next step, we will join the path using UPLOAD_FOLDER with an image name we want to display on the web page. We will store this address in the Flask_Logo variable inside the Display_IMG() function.
+
+Flask_Logo = os.path.join(app.config["UPLOAD_FOLDER"], "flask-logo.png")
+Next, we will need to define an argument inside the render_template() and pass the Flask_Logo variable to this as a value.
+
+from flask import Flask, render_template
+import os
+
+app = Flask(__name__)
+
+IMG_FOLDER = os.path.join("static", "IMG")
+
+app.config["UPLOAD_FOLDER"] = IMG_FOLDER
+
+
+@app.route("/")
+def Display_IMG():
+    Flask_Logo = os.path.join(app.config["UPLOAD_FOLDER"], "flask-logo.png")
+    return render_template("index.html", user_image=Flask_Logo)
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
+Now we will need to go to the templates folder and create an index.html file, and inside this file, we will write basic HTML code. We will only pass the user_image variable in the img tag we defined in the render_template().
+
+This is the source code used in the HTML file for this example:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello Worl!</title>
+</head>
+<body>
+<h1>Hello World!</h1>
+ <center><h3>Flask Logo</h3><img src="{{ user_image }}" alt="Mike" height="240px" width="300px"></center>
+</body>
+</html>
+
+When we run this app, we shall see the image displayed properly.
