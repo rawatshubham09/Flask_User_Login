@@ -30,20 +30,20 @@ This project features a user login page that allows new user registration and ac
 
   ## Screenshots
   - Home Page
-  ![Home Page](static\readme\home1.png)
-  ![Home Page](static\readme\home2.png)
+  ![Home Page](static/readme/home1.png)
+  ![Home Page](static/readme/home2.png)
 
   - New User Registration Page
-  ![Registration](static\readme\newUser.png)
+  ![Registration](static/readme/newUser.png)
 
   - Login Page
-  ![Login Page](static\readme\Login1.png)
+  ![Login Page](static/readme/Login1.png)
 
   - Dashboard Page
-  ![Dashboard Page](static\readme\dashboard.png)
+  ![Dashboard Page](static/readme/dashboard.png)
 
   - Artifacts Page
-  ![Artifacts](static\readme\artifacts.png)
+  ![Artifacts](static/readme/artifacts.png)
   
 
 
